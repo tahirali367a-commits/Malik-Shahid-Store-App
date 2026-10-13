@@ -213,3 +213,24 @@ body {
     border-radius: 50%; object-fit: cover;
     border: 2px solid #00d4ff;
 }
+.dev-toggle-btn {
+    margin-top: 10px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 127, 0.2));
+    color: #00d4ff;
+    border: 1.5px solid #00d4ff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.dev-dropdown-box {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(11, 15, 25, 0.7);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
