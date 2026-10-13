@@ -1,47 +1,47 @@
-// ملک شاہد ڈرائی فروٹ - تازہ اور منہ میں پانی لے آنے والی تصاویر اور ایڈوانسڈ کوانٹیٹی سلیکشن
+// ملک شاہد ڈرائی فروٹ - اوریجنل ڈائریکٹ HD تصاویر اور ایڈوانسڈ آرڈرنگ فیچرز
 const products = [
     {
         id: 1,
         nameUrdu: "مونگ پھلی",
         nameEnglish: "Roasted Peanuts",
-        image: "https://images.unsplash.com/photo-1567892560267-2f3a8b4171d1?auto=format&fit=crop&w=900&q=85",
+        image: "https://images.unsplash.com/photo-1567892560267-2f3a8b4171d1?auto=format&fit=crop&w=800&q=80",
         units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "2 کلو", "5 کلو"]
     },
     {
         id: 2,
         nameUrdu: "ابلا ہوا انڈا",
         nameEnglish: "Boiled Egg",
-        image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=900&q=85",
+        image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=800&q=80",
         units: ["1 انڈا", "2 انڈے", "5 انڈے", "10 انڈے", "20 انڈے"]
     },
     {
         id: 3,
         nameUrdu: "بھنے ہوئے چنے",
-        nameEnglish: "Roasted Chickpeas",
-        image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=900&q=85",
+        nameEnglish: "Roasted Black Chickpeas",
+        image: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=800&q=80",
         units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "2 کلو"]
     },
     {
         id: 4,
         nameUrdu: "چکوالی ریوڑی",
-        nameEnglish: "Chakwal Rewri",
-        image: "https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&w=900&q=85",
+        nameEnglish: "Chakwal Til Rewri",
+        image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=800&q=80",
         units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "پیکٹ کے حساب سے"]
     },
     {
         id: 5,
         nameUrdu: "ٹانگری",
-        nameEnglish: "Tangri Snack",
-        image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=900&q=85",
+        nameEnglish: "Tangri Namkeen Snack",
+        image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=800&q=80",
         units: ["1 پیکٹ", "2 پیکٹس", "5 پیکٹس", "10 پیکٹس", "باکس سپلائی"]
     }
 ];
 
-const rollSamosaOnlineImage = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85";
+const rollSamosaOnlineImage = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80";
 
 let cart = {};
 let rollQtyIndex = 0;
-const rollQuantitiesList = ["10 رول", "20 رول", "50 رول", "100 رول", "200 رول", "400 رول", "ڈکان ہول سیل بلک سپلائی"];
+const rollQuantitiesList = ["10 رول", "20 رول", "50 رول", "100 رول", "200 رول", "400 رول", "دکان ہول سیل بلک سپلائی"];
 const ownerWhatsApp = "923493900367";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -99,7 +99,7 @@ function renderProducts() {
     grid.innerHTML = "";
 
     products.forEach(product => {
-        let optionsHTML = product.units.map((unit, idx) => `<option value="${unit}">${unit}</option>`).join('');
+        let optionsHTML = product.units.map(unit => `<option value="${unit}">${unit}</option>`).join('');
 
         const card = document.createElement("div");
         card.className = "product-card glass-card";
@@ -114,20 +114,20 @@ function renderProducts() {
                 <div class="price-tag">قیمت واٹس ایپ پر معلوم کریں</div>
             </div>
 
-            <div class="owner-badge">
-                <img src="malik-shahid-waris.jpg" alt="Owner" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'30\' height=\'30\'><rect width=\'100%\' height=\'100%\' fill=\'%23ccc\'/></svg>';">
+            <div class="owner-badge-mini">
+                <img src="malik-shahid-waris.jpg" alt="Owner" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\'><rect width=\'100%\' height=\'100%\' fill=\'%23ccc\'/></svg>';">
                 <span>Malik Shahid Waris</span>
             </div>
 
-            <div class="quantity-controls" style="margin: 12px 0; display: flex; flex-direction: column; gap: 6px;">
-                <label style="font-size: 0.9rem; color: #00d4ff;">مقدار / وزن منتخب کریں:</label>
-                <select id="select-unit-${product.id}" style="padding: 8px; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: 1px solid #00d4ff; font-weight: bold;">
+            <div class="quantity-controls" style="margin: 10px 0; display: flex; flex-direction: column; gap: 5px;">
+                <label style="font-size: 0.85rem; color: #00d4ff; font-weight: bold;">وزن / مقدار منتخب کریں:</label>
+                <select id="select-unit-${product.id}" style="padding: 8px; border-radius: 8px; background: rgba(15, 23, 42, 0.9); color: white; border: 1px solid #00d4ff; font-weight: bold; cursor: pointer;">
                     ${optionsHTML}
                 </select>
             </div>
 
             <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="addToCart(${product.id})">کارٹ میں شامل کریں</button>
+                <button class="add-to-cart-btn" onclick="addToCart(${product.id})">🛒 کارٹ میں شامل کریں</button>
                 <a href="#" class="product-whatsapp-btn" onclick="orderSingle(event, ${product.id})">💬 WhatsApp آرڈر</a>
             </div>
         `;

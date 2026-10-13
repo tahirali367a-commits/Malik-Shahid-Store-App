@@ -17,14 +17,12 @@ body {
 /* Animated Multicolour Background Waves */
 .animated-bg-waves {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: -1;
     background: linear-gradient(135deg, #0b0f19, #1e1035, #0d2137, #0b0f19);
     background-size: 400% 400%;
-    animation: waveMotion 12s ease infinite;
+    animation: waveMotion 10s ease infinite;
 }
 
 @keyframes waveMotion {
@@ -33,36 +31,33 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* 🌊 Liquid Glowing Flowing Borders Effect 🌊 */
+/* 🌊 100% FULL Liquid Glowing Flowing Borders Effect 🌊 */
 .glass-card, .product-card, .shop-header, .wholesale-section, .developer-footer {
     position: relative;
-    background: rgba(15, 23, 42, 0.75) !important;
+    background: rgba(15, 23, 42, 0.85) !important;
     backdrop-filter: blur(16px);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 22px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     overflow: hidden;
     border: 2px solid transparent;
 }
 
-/* بہتا ہوا چمکتا پانی سا لائٹنگ بارڈر */
 .glass-card::before, .product-card::before, .shop-header::before, .wholesale-section::before, .developer-footer::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
     background: conic-gradient(
         from 0deg,
-        transparent 0%,
-        #00d4ff 25%,
-        #ff007f 50%,
-        #00ff66 75%,
-        transparent 100%
+        #00d4ff 0%,
+        #ff007f 25%,
+        #00ff66 50%,
+        #ff9f43 75%,
+        #00d4ff 100%
     );
-    animation: liquidWaterRotate 5s linear infinite;
+    animation: liquidRotate 4s linear infinite;
     z-index: -2;
 }
 
@@ -70,18 +65,52 @@ body {
     content: '';
     position: absolute;
     inset: 3px;
-    background: rgba(15, 23, 42, 0.88);
+    background: rgba(15, 23, 42, 0.92);
     backdrop-filter: blur(12px);
-    border-radius: 17px;
+    border-radius: 15px;
     z-index: -1;
 }
 
-@keyframes liquidWaterRotate {
+@keyframes liquidRotate {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* Welcome Overlay Styling */
+/* 🖼️ Owner Mini Badge (چھوٹی اور وی آئی پی تصویر) */
+.owner-badge-mini {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.owner-badge-mini img {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #ff007f;
+}
+
+.owner-badge-mini span {
+    font-size: 0.8rem;
+    color: #e2e8f0;
+    font-weight: 600;
+}
+
+/* Image Fit & Styling */
+.product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
 .welcome-screen {
     position: fixed;
     top: 0; left: 0;
@@ -94,23 +123,23 @@ body {
 
 .welcome-card {
     text-align: center;
-    max-width: 460px;
+    max-width: 450px;
     width: 100%;
 }
 
 .hasan-container img {
-    width: 110px; height: 110px;
+    width: 100px; height: 100px;
     border-radius: 50%; object-fit: cover;
     border: 3px solid #00d4ff;
-    box-shadow: 0 0 25px #00d4ff;
+    box-shadow: 0 0 20px #00d4ff;
 }
 
 .play-btn {
     background: linear-gradient(90deg, #ff007f, #ff4757, #00d4ff);
     background-size: 200% 200%;
-    color: white; font-weight: bold; font-size: 1.25rem;
-    padding: 14px 30px; border: none; border-radius: 35px;
-    cursor: pointer; margin-top: 18px; width: 100%;
+    color: white; font-weight: bold; font-size: 1.2rem;
+    padding: 12px 28px; border: none; border-radius: 30px;
+    cursor: pointer; margin-top: 15px; width: 100%;
     box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
     animation: btnGlow 3s ease infinite;
 }
@@ -124,55 +153,46 @@ body {
 .audio-btn {
     background: rgba(255, 255, 255, 0.08);
     color: #00d4ff; border: 1px solid #00d4ff;
-    padding: 11px 20px; border-radius: 25px;
-    cursor: pointer; margin-top: 12px; width: 100%; font-weight: bold;
+    padding: 10px 20px; border-radius: 20px;
+    cursor: pointer; margin-top: 10px; width: 100%; font-weight: bold;
 }
 
-/* Profile and Images */
 .owner-profile {
-    display: flex; align-items: center; gap: 16px;
+    display: flex; align-items: center; gap: 14px;
 }
 
 .owner-profile img {
-    width: 80px; height: 80px;
+    width: 70px; height: 70px;
     border-radius: 50%; object-fit: cover;
-    border: 3px solid #ff007f;
-    box-shadow: 0 0 15px #ff007f;
+    border: 2px solid #ff007f;
+    box-shadow: 0 0 12px #ff007f;
 }
 
-.product-image {
-    width: 100%; height: 195px;
-    object-fit: cover; border-radius: 14px;
-    margin-bottom: 10px;
-}
-
-/* Buttons */
 .add-to-cart-btn {
     background: linear-gradient(45deg, #00b894, #00cec9);
-    color: white; border: none; padding: 11px;
-    border-radius: 10px; font-weight: bold; cursor: pointer;
+    color: white; border: none; padding: 10px;
+    border-radius: 8px; font-weight: bold; cursor: pointer;
 }
 
 .header-whatsapp-btn, .product-whatsapp-btn, .wholesale-whatsapp-btn, .dev-whatsapp-btn {
     background: linear-gradient(45deg, #25D366, #128C7E);
-    color: white; text-decoration: none; padding: 12px;
-    border-radius: 10px; font-weight: bold; text-align: center;
-    display: block; margin-top: 10px;
+    color: white; text-decoration: none; padding: 10px;
+    border-radius: 8px; font-weight: bold; text-align: center;
+    display: block; margin-top: 8px;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
 }
 
-/* Floating Cart */
 .cart-bar {
     position: fixed; bottom: 0; left: 0; width: 100%;
     background: rgba(15, 23, 42, 0.95);
-    padding: 14px 20px; display: flex;
+    padding: 12px 20px; display: flex;
     justify-content: space-between; align-items: center;
     border-top: 2px solid #00d4ff; z-index: 1000;
 }
 
 .view-cart-btn {
     background: #ff4757; color: white; border: none;
-    padding: 10px 18px; border-radius: 20px;
+    padding: 8px 16px; border-radius: 20px;
     font-weight: bold; cursor: pointer;
 }
 
@@ -189,7 +209,7 @@ body {
 }
 
 .dev-card img {
-    width: 75px; height: 75px;
+    width: 65px; height: 65px;
     border-radius: 50%; object-fit: cover;
     border: 2px solid #00d4ff;
 }
