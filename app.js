@@ -1,43 +1,43 @@
-// ملک شاہد ڈرائی فروٹ - اوریجنل ڈائریکٹ HD تصاویر اور ایڈوانسڈ آرڈرنگ فیچرز
+// ملک شاہد ڈرائی فروٹ - ۱۰۰٪ لوکل فولڈر والی تصاویر کے ساتھ
 const products = [
     {
         id: 1,
         nameUrdu: "مونگ پھلی",
         nameEnglish: "Roasted Peanuts",
-        image: "https://images.unsplash.com/photo-1567892560267-2f3a8b4171d1?auto=format&fit=crop&w=800&q=80",
+        image: "mong-phali.jpg",
         units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "2 کلو", "5 کلو"]
     },
     {
         id: 2,
-        nameUrdu: "ابلا ہوا انڈا",
+        nameUrdu: "بوائل انڈہ",
         nameEnglish: "Boiled Egg",
-        image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=800&q=80",
+        image: "boiled-egg.jpg",
         units: ["1 انڈا", "2 انڈے", "5 انڈے", "10 انڈے", "20 انڈے"]
     },
     {
         id: 3,
-        nameUrdu: "بھنے ہوئے چنے",
+        nameUrdu: "بھنے چنے",
         nameEnglish: "Roasted Black Chickpeas",
-        image: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=800&q=80",
+        image: "bhune-chane.jpg",
         units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "2 کلو"]
     },
     {
         id: 4,
-        nameUrdu: "چکوالی ریوڑی",
+        nameUrdu: "چکوال ریوڑی",
         nameEnglish: "Chakwal Til Rewri",
-        image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=800&q=80",
+        image: "chakwal-rewri.jpg",
         units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "پیکٹ کے حساب سے"]
     },
     {
         id: 5,
-        nameUrdu: "ٹانگری",
+        nameUrdu: "ٹنگڑی / نمکو",
         nameEnglish: "Tangri Namkeen Snack",
-        image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=800&q=80",
+        image: "tangri.jpg",
         units: ["1 پیکٹ", "2 پیکٹس", "5 پیکٹس", "10 پیکٹس", "باکس سپلائی"]
     }
 ];
 
-const rollSamosaOnlineImage = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80";
+const rollSamosaImageFile = "roll-samosa.jpg";
 
 let cart = {};
 let rollQtyIndex = 0;
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function setRollSamosaImage() {
     const rollImg = document.querySelector(".wholesale-img");
     if (rollImg) {
-        rollImg.src = rollSamosaOnlineImage;
+        rollImg.src = rollSamosaImageFile;
     }
 }
 
@@ -258,16 +258,12 @@ function sendCartToWhatsApp() {
 
     const url = `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
-}function toggleDevBio() {
-    const bioContent = document.getElementById("dev-bio-content");
-    if (bioContent) {
-        bioContent.classList.toggle("hidden");
-    }
 }
+
+// Developer Bio Toggle Function
 function toggleDevBio() {
     const bioContent = document.getElementById("dev-bio-content");
     if (bioContent) {
         bioContent.classList.toggle("hidden");
     }
 }
-
