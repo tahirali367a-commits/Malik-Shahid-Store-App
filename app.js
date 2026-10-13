@@ -1,48 +1,50 @@
-// آن لائن تازہ اور اسپیشل تصاویر کے لنکس کے ساتھ اپ ڈیٹ شدہ پروڈکٹ لسٹ
+// ملک شاہد ڈرائی فروٹ - تازہ اور منہ میں پانی لے آنے والی تصاویر اور ایڈوانسڈ کوانٹیٹی سلیکشن
 const products = [
     {
         id: 1,
         nameUrdu: "مونگ پھلی",
         nameEnglish: "Roasted Peanuts",
-        image: "https://images.unsplash.com/photo-1567892560267-2f3a8b4171d1?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1567892560267-2f3a8b4171d1?auto=format&fit=crop&w=900&q=85",
+        units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "2 کلو", "5 کلو"]
     },
     {
         id: 2,
         nameUrdu: "ابلا ہوا انڈا",
         nameEnglish: "Boiled Egg",
-        image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=900&q=85",
+        units: ["1 انڈا", "2 انڈے", "5 انڈے", "10 انڈے", "20 انڈے"]
     },
     {
         id: 3,
         nameUrdu: "بھنے ہوئے چنے",
-        nameEnglish: "Roasted Chickpeas (Bhune Chane)",
-        image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80"
+        nameEnglish: "Roasted Chickpeas",
+        image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=900&q=85",
+        units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "2 کلو"]
     },
     {
         id: 4,
         nameUrdu: "چکوالی ریوڑی",
         nameEnglish: "Chakwal Rewri",
-        image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&w=900&q=85",
+        units: ["1 پاؤ (250g)", "آدھا کلو (500g)", "1 کلو (1kg)", "پیکٹ کے حساب سے"]
     },
     {
         id: 5,
         nameUrdu: "ٹانگری",
         nameEnglish: "Tangri Snack",
-        image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=900&q=85",
+        units: ["1 پیکٹ", "2 پیکٹس", "5 پیکٹس", "10 پیکٹس", "باکس سپلائی"]
     }
 ];
 
-// رول سموسے کے لیے آن لائن تازہ تصویر کا لنک
-const rollSamosaOnlineImage = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80";
+const rollSamosaOnlineImage = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85";
 
-let quantities = {};
 let cart = {};
-let rollQty = 10;
+let rollQtyIndex = 0;
+const rollQuantitiesList = ["10 رول", "20 رول", "50 رول", "100 رول", "200 رول", "400 رول", "ڈکان ہول سیل بلک سپلائی"];
 const ownerWhatsApp = "923493900367";
 
 document.addEventListener("DOMContentLoaded", () => {
-    products.forEach(p => { quantities[p.id] = 1; });
-
     renderProducts();
     setRollSamosaImage();
 
@@ -97,6 +99,8 @@ function renderProducts() {
     grid.innerHTML = "";
 
     products.forEach(product => {
+        let optionsHTML = product.units.map((unit, idx) => `<option value="${unit}">${unit}</option>`).join('');
+
         const card = document.createElement("div");
         card.className = "product-card glass-card";
         card.innerHTML = `
@@ -115,10 +119,11 @@ function renderProducts() {
                 <span>Malik Shahid Waris</span>
             </div>
 
-            <div class="quantity-controls">
-                <button class="qty-btn" onclick="updateQty(${product.id}, -1)">-</button>
-                <span class="qty-display" id="qty-${product.id}">${quantities[product.id]}</span>
-                <button class="qty-btn" onclick="updateQty(${product.id}, 1)">+</button>
+            <div class="quantity-controls" style="margin: 12px 0; display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.9rem; color: #00d4ff;">مقدار / وزن منتخب کریں:</label>
+                <select id="select-unit-${product.id}" style="padding: 8px; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: 1px solid #00d4ff; font-weight: bold;">
+                    ${optionsHTML}
+                </select>
             </div>
 
             <div class="product-actions">
@@ -130,56 +135,55 @@ function renderProducts() {
     });
 }
 
-function updateQty(productId, change) {
-    quantities[productId] += change;
-    if (quantities[productId] < 1) {
-        quantities[productId] = 1;
-    }
-    const display = document.getElementById(`qty-${productId}`);
-    if (display) {
-        display.innerText = quantities[productId];
-    }
-}
-
 function updateRollQty(change) {
-    rollQty += change;
-    if (rollQty < 1) {
-        rollQty = 1;
-    }
+    rollQtyIndex += change;
+    if (rollQtyIndex < 0) rollQtyIndex = 0;
+    if (rollQtyIndex >= rollQuantitiesList.length) rollQtyIndex = rollQuantitiesList.length - 1;
+    
     const display = document.getElementById("roll-qty-display");
     if (display) {
-        display.innerText = rollQty;
+        display.innerText = rollQuantitiesList[rollQtyIndex];
     }
 }
 
 function orderRollSamosa(event) {
     event.preventDefault();
-    const message = `السلام علیکم ملک شاہد وارث صاحب! مجھے رول سموسوں کی سپلائی کے بارے میں معلومات چاہیے۔\n\nآرڈر کی قسم: دکان کے لیے سپلائی / عام آرڈر\nمطلوبہ مقدار: ${rollQty}\nبراہ کرم قیمت، مصنوعات کی حالت، دستیابی اور سپلائی کی تفصیلات بتا دیں۔\n\nشکریہ!`;
+    const selectedQtyText = rollQuantitiesList[rollQtyIndex];
+    const customerName = prompt("براہ کرم اپنا نام درج کریں:", "محترم گاہک");
+    if (!customerName) return;
+    const customerAddress = prompt("براہ کرم اپنا پتہ یا دکان کا نام درج کریں:", "مقام / پتہ");
+    if (!customerAddress) return;
+
+    const message = `السلام علیکم ملک شاہد وارث صاحب!\n\nمجھے رول سموسوں کی ہول سیل سپلائی درکار ہے۔\n\n👤 نام: ${customerName}\n📍 پتہ/دکان: ${customerAddress}\n📦 مطلوبہ مقدار: ${selectedQtyText}\n\nبراہ کرم قیمت اور سپلائی کی تفصیلات بتا دیں۔ شکریہ!`;
     const url = `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
 }
 
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    const qty = quantities[productId];
+    const selectElem = document.getElementById(`select-unit-${productId}`);
+    const selectedUnit = selectElem ? selectElem.value : "1 عدد";
 
-    if (cart[productId]) {
-        cart[productId].qty += qty;
+    const cartKey = `${productId}-${selectedUnit}`;
+
+    if (cart[cartKey]) {
+        cart[cartKey].qtyCount += 1;
     } else {
-        cart[productId] = {
+        cart[cartKey] = {
             name: product.nameUrdu,
             nameEnglish: product.nameEnglish,
-            qty: qty
+            unit: selectedUnit,
+            qtyCount: 1
         };
     }
     updateCartCount();
-    alert(`${product.nameUrdu} کارٹ میں شامل کر دیا گیا!`);
+    alert(`${product.nameUrdu} (${selectedUnit}) کارٹ میں شامل کر دیا گیا!`);
 }
 
 function updateCartCount() {
     let totalItems = 0;
     for (let key in cart) {
-        totalItems += cart[key].qty;
+        totalItems += cart[key].qtyCount;
     }
     document.getElementById("cart-count").innerText = totalItems;
 }
@@ -199,28 +203,34 @@ function renderCartItems() {
         const row = document.createElement("div");
         row.className = "cart-item-row";
         row.innerHTML = `
-            <div>
+            <div style="margin-bottom: 8px;">
                 <strong>${item.name}</strong> (${item.nameEnglish})<br>
-                <small>مقدار: ${item.qty}</small>
+                <small style="color: #00d4ff;">منتخب مقدار/وزن: ${item.unit} (تعداد: ${item.qtyCount})</small>
             </div>
-            <button onclick="removeFromCart(${key})" style="background:#ff4757; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:bold;">حذف کریں</button>
+            <button onclick="removeFromCart('${key}')" style="background:#ff4757; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:bold;">حذف کریں</button>
         `;
         list.appendChild(row);
     });
 }
 
-function removeFromCart(productId) {
-    delete cart[productId];
+function removeFromCart(cartKey) {
+    delete cart[cartKey];
     renderCartItems();
     updateCartCount();
 }
 
-function orderSingle(event, productId) {
-    event.preventDefault();
+function orderSingle(originEvent, productId) {
+    originEvent.preventDefault();
     const product = products.find(p => p.id === productId);
-    const qty = quantities[productId];
+    const selectElem = document.getElementById(`select-unit-${productId}`);
+    const selectedUnit = selectElem ? selectElem.value : "1 عدد";
 
-    const message = `السلام علیکم ملک شاہد وارث صاحب!\n\nمجھے Malik Shahid Dry Fruit سے یہ چیز منگوانی ہے۔\n\nپروڈکٹ: ${product.nameUrdu} (${product.nameEnglish})\nمقدار: ${qty}\n\nبراہ کرم اس کی قیمت اور دستیابی بتا دیں۔\n\nشکریہ!`;
+    const customerName = prompt("براہ کرم اپنا نام درج کریں:", "محترم گاہک");
+    if (!customerName) return;
+    const customerAddress = prompt("براہ کرم اپنا پتہ درج کریں:", "مقام / پتہ");
+    if (!customerAddress) return;
+
+    const message = `السلام علیکم ملک شاہد وارث صاحب!\n\nمجھے Malik Shahid Dry Fruit سے آرڈر منگوانا ہے۔\n\n👤 نام: ${customerName}\n📍 پتہ: ${customerAddress}\n\n📦 پروڈکٹ: ${product.nameUrdu} (${product.nameEnglish})\n⚖️ مقدار/وزن: ${selectedUnit}\n\nبراہ کرم اس کی قیمت اور دستیابی بتا دیں۔ شکریہ!`;
     const url = `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
 }
@@ -232,14 +242,19 @@ function sendCartToWhatsApp() {
         return;
     }
 
-    let message = "السلام علیکم ملک شاہد وارث صاحب!\n\nمیں Malik Shahid Dry Fruit سے یہ آرڈر کرنا چاہتا ہوں:\n\n";
+    const customerName = prompt("براہ کرم اپنا نام درج کریں:", "محترم گاہک");
+    if (!customerName) return;
+    const customerAddress = prompt("براہ کرم اپنا پتہ درج کریں:", "مقام / پتہ");
+    if (!customerAddress) return;
+
+    let message = `السلام علیکم ملک شاہد وارث صاحب!\n\nمیں Malik Shahid Dry Fruit سے یہ آرڈر کرنا چاہتا ہوں:\n\n👤 نام: ${customerName}\n📍 پتہ: ${customerAddress}\n\n--- آڈر کی تفصیلات ---\n`;
     
     keys.forEach(key => {
         const item = cart[key];
-        message += `- ${item.name} (${item.nameEnglish}) — مقدار: ${item.qty}\n`;
+        message += `🔹 ${item.name} (${item.nameEnglish}) — مقدار/وزن: ${item.unit} (سیٹ: ${item.qtyCount})\n`;
     });
 
-    message += "\nبراہ کرم قیمت اور دستیابی بتا دیں۔\n\nشکریہ!";
+    message += "\nبراہ کرم کل قیمت اور دستیابی بتا دیں۔ شکریہ!";
 
     const url = `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');

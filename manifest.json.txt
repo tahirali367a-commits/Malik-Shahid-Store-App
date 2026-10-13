@@ -1,0 +1,15 @@
+{
+    "name": "Malik Shahid Dry Fruit",
+    "short_name": "MSW Dry Fruit",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#ff6b6b",
+    "icons": [
+        {
+            "src": "home-icon.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ]
+}
