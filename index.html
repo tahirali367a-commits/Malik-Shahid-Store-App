@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malik Shahid Dry Fruit - ملک شاہد ڈرائی فروٹ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b6b">
+    <link rel="icon" href="home-icon.svg" type="image/svg+xml">
+</head>
+<body>
+
+    <!-- Animated Multicolour Waves Background -->
+    <div class="animated-bg-waves"></div>
+
+    <!-- Welcome / Play App Screen Overlay -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-card glass-card">
+            <div class="hasan-container">
+                <img src="hasan-ali.jpg" alt="Hasan Ali" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23ddd\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23555\' font-size=\'14\'>Hasan Ali</text></svg>';">
+            </div>
+            <h2>Hasan Ali</h2>
+            <h1>Malik Shahid Dry Fruit</h1>
+            <p class="welcome-text">ملک شاہد ڈرائی فروٹ میں خوش آمدید! یہاں آپ ہماری دستیاب اشیاء کی تصاویر دیکھ سکتے ہیں، اپنی پسند کی چیز منتخب کر سکتے ہیں اور واٹس ایپ کے ذریعے براہ راست آرڈر کر سکتے ہیں۔ دکانوں کے لیے رول سموسوں کی سپلائی کے بارے میں بھی رابطہ کریں۔</p>
+            
+            <button id="play-app-btn" class="glow-btn play-btn">PLAY APP</button>
+            <button id="audio-toggle-btn" class="audio-btn">🔊 ویلکم آڈیو سنیں / بند کریں</button>
+        </div>
+    </div>
+
+    <!-- Main Shop Container -->
+    <div id="main-app" class="main-app hidden">
+        
+        <!-- Header Section -->
+        <header class="shop-header glass-card">
+            <div class="owner-profile">
+                <img src="malik-shahid-waris.jpg" alt="Malik Shahid Waris" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'><rect width=\'100%\' height=\'100%\' fill=\'%23ddd\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23555\' font-size=\'12\'>Malik Shahid</text></svg>';">
+                <div>
+                    <h1>Malik Shahid Dry Fruit</h1>
+                    <h2>Malik Shahid Waris</h2>
+                    <h3 class="urdu-name">ملک شاہد وارث</h3>
+                </div>
+            </div>
+            <p class="shop-tagline">اپنی پسند کی دستیاب اشیاء دیکھیں، مقدار منتخب کریں اور واٹس ایپ کے ذریعے قیمت یا آرڈر کی تفصیلات معلوم کریں۔ دکانوں کے لیے رول سموسوں کی سپلائی کے بارے میں بھی رابطہ کریں۔</p>
+            <a href="https://wa.me/923493900367?text=السلام%20علیکم%20ملک%20شاہد%20وارث%20صاحب!%20مجھے%20آرڈر%20یا%20معلومات%20کے%20بارے%20میں%20پوچھنا%20ہے۔" target="_blank" class="header-whatsapp-btn">
+                💬 واٹس ایپ پر رابطہ کریں
+            </a>
+        </header>
+
+        <!-- Roll Samosa Wholesale Section -->
+        <section class="wholesale-section glass-card">
+            <div class="wholesale-header">
+                <img src="roll-samosa.jpg" alt="Roll Samosa" class="wholesale-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'160\'><rect width=\'100%\' height=\'100%\' fill=\'%23eee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'red\' font-size=\'14\'>Roll Samosa Supply</text></svg>';">
+                <div>
+                    <h3>رول سموسے اور دکانوں کے لیے سپلائی</h3>
+                    <p class="wholesale-desc">ہم رول سموسے تیار کرکے دکانوں کو سپلائی کرنے کے آرڈرز بھی لیتے ہیں۔ اگر آپ دکاندار ہیں یا بڑی مقدار میں رول سموسے درکار ہیں تو واٹس ایپ پر رابطہ کریں۔</p>
+                </div>
+            </div>
+            <div class="wholesale-info-box">
+                <p><strong>وضاحت:</strong> دکانوں والے ہم سے رول سموسے منگوا سکتے ہیں۔ ہم تیار شدہ مگر خود فرائی کرنے والی مصنوعات کی سپلائی کے بارے میں بات کرتے ہیں۔ مقدار، قیمت، دستیابی اور سپلائی کی تفصیلات واٹس ایپ پر طے کی جاتی ہیں۔</p>
+            </div>
+            <div class="wholesale-qty-box">
+                <span>مطلوبہ مقدار:</span>
+                <button class="qty-btn" onclick="updateRollQty(-1)">-</button>
+                <span id="roll-qty-display" class="qty-display">10</span>
+                <button class="qty-btn" onclick="updateRollQty(1)">+</button>
+            </div>
+            <a href="#" class="wholesale-whatsapp-btn" onclick="orderRollSamosa(event)">
+                🚀 رول سموسوں کا کاروباری آرڈر (WhatsApp)
+            </a>
+        </section>
+
+        <!-- Five Products Section -->
+        <main class="products-container">
+            <h2>دستیاب مصنوعات (Dry Fruit & Snacks)</h2>
+            <div class="products-grid" id="products-grid">
+                <!-- Dynamically generated product cards -->
+            </div>
+        </main>
+
+        <!-- Floating Cart Bar -->
+        <div id="cart-bar" class="cart-bar">
+            <div class="cart-info">
+                <span>🛒 کارٹ: <strong id="cart-count">0</strong> اشیاء</span>
+            </div>
+            <button id="view-cart-btn" class="view-cart-btn">کارٹ دیکھیں & چیک آؤٹ</button>
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="modal hidden">
+            <div class="modal-content glass-card">
+                <span id="close-modal" class="close-btn">&times;</span>
+                <h2>آپ کا شاپنگ کارٹ</h2>
+                <div id="cart-items-list" class="cart-items-list">
+                    <!-- Cart items go here -->
+                </div>
+                <div class="cart-actions">
+                    <button id="whatsapp-checkout-btn" class="whatsapp-checkout-btn">WhatsApp پر مشترکہ آرڈر بھیجیں 🚀</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Developer Section at Bottom -->
+        <footer class="developer-footer glass-card">
+            <div class="dev-card">
+                <img src="tahir-nazeer.jpg" alt="Tahir Nazeer" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'><rect width=\'100%\' height=\'100%\' fill=\'%23ddd\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23555\' font-size=\'12\'>Tahir Nazeer</text></svg>';">
+                <div class="dev-info">
+                    <h3>Tahir Nazeer <span class="urdu-dev">طاہر نظیر</span></h3>
+                    <p class="dev-bio">
+                        طاہر نظیر ایک پاکستانی میوزک کریئیٹر، شاعر، نغمہ نگار، ریپر اور میوزک پروڈیوسر ہیں۔ وہ موبائل فرینڈلی ویب سائٹس، آن لائن شاپس اور ڈیجیٹل پروجیکٹس پر بھی کام کرتے ہیں۔ اگر آپ اپنے کاروبار کے لیے ویب سائٹ بنوانا چاہتے ہیں، آن لائن شاپ بنوانا चाहते ہیں، یا اپنے کسی نئے آئیڈیا کو ایک خوبصورت موبائل ایپ یا ویب ایپ کی شکل دینا چاہتے ہیں تو طاہر نظیر سے رابطہ کر سکتے ہیں۔
+                    </p>
+                    
+                    <div class="services-tags">
+                        <span>موبائل فرینڈلی ویب ایپس</span>
+                        <span>آن لائن شاپس</span>
+                        <span>کاروباری ویب سائٹس</span>
+                        <span>ڈیجیٹل پروجیکٹس</span>
+                        <span>ایپ ڈیزائن</span>
+                        <span>میوزک پروڈکشن</span>
+                        <span>گیت لکھنا</span>
+                        <span>شاعری</span>
+                        <span>بول لکھنا</span>
+                        <span>ووکل ایڈیٹنگ</span>
+                        <span>مکسنگ</span>
+                        <span>ماسٹرنگ</span>
+                    </div>
+
+                    <a href="https://wa.me/923437688367?text=السلام%20علیکم%20طاہر%20نظیر%20صاحب!%20میں%20اپنی%20ویب سائٹ،%20آن%20لائن%20شاپ%20یا%20کسی%20ڈیجیٹل%20پروجیکٹ%20کے%20بارے%20میں%20معلومات%20حاصل%20کرنا%20چاہتا%20ہوں." target="_blank" class="dev-whatsapp-btn">
+                        💬 ڈیولپر سے واٹس ایپ پر رابطہ کریں
+                    </a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 Malik Shahid Dry Fruit. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="welcome-audio" src="welcome.mp3" preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
