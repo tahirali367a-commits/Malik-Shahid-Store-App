@@ -1,9 +1,9 @@
-// آن لائن ڈائریکٹ تصاویر کے لنکس کے ساتھ اپ ڈیٹ شدہ پروڈکٹس لسٹ
+// آن لائن تازہ اور اسپیشل تصاویر کے لنکس کے ساتھ اپ ڈیٹ شدہ پروڈکٹ لسٹ
 const products = [
     {
         id: 1,
         nameUrdu: "مونگ پھلی",
-        nameEnglish: "Peanuts",
+        nameEnglish: "Roasted Peanuts",
         image: "https://images.unsplash.com/photo-1567892560267-2f3a8b4171d1?auto=format&fit=crop&w=600&q=80"
     },
     {
@@ -14,8 +14,8 @@ const products = [
     },
     {
         id: 3,
-        nameUrdu: "ابلے ہوئے چنے",
-        nameEnglish: "Boiled Chickpeas",
+        nameUrdu: "بھنے ہوئے چنے",
+        nameEnglish: "Roasted Chickpeas (Bhune Chane)",
         image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80"
     },
     {
@@ -32,7 +32,7 @@ const products = [
     }
 ];
 
-// رول سموسے کے لیے آن لائن تصویر کا لنک
+// رول سموسے کے لیے آن لائن تازہ تصویر کا لنک
 const rollSamosaOnlineImage = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80";
 
 let quantities = {};
